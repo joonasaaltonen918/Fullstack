@@ -1,0 +1,50 @@
+﻿@model EventPlan1.Models.Domain.Event
+<link href="/css/styles.css" rel="stylesheet" />
+<link href="/css/forms.css" rel="stylesheet" />
+<form class="w-40" asp-action="Add" method="post">
+    <h2 class="pb-10">Add Event</h2>
+    <div class="input-container">
+        <label asp-for="EventName" class="w-40">Event Name</label>
+        <input type="text" class="input" asp-for="EventName">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="EventName"></span>
+    </div>
+    
+    <div class="input-container">
+        <label asp-for="EventDescription" class="w-40">Event Description</label>
+        <textarea class="input" asp-for="EventDescription"></textarea>
+    </div>
+    
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="EventDescription"></span>
+    </div>
+    <div class="input-container">
+        <label asp-for="EventTime" class="w-40">Event Time</label>
+        <input type="datetime-local" class="input" asp-for="EventTime">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="EventTime"></span>
+    </div>
+
+   
+
+
+        
+    
+
+
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+
+    <div class="input-container">
+        <button class="btn btn-default" type="submit">Add</button>
+        <a class="btn btn-sec" href="/Event/EventList">All records</a>
+
+    </div>
+</form>

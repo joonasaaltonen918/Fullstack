@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EventPlan1.Models.Domain.Event>
+<link href="/css/styles.css" rel="stylesheet" />
+@* <link href="/css/style.css" rel="stylesheet" /> *@
+<link href="/css/forms.css" rel="stylesheet" />
+<section class="search-bar">
+    <form method="get" asp-action="Index">
+        <input type="text" name="term" placeholder="search here">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <a class="btn btn-default" href="/Home/Index">All</a>
+    </form>
+</section>
+@if (Model != null)
+{
+<section class="events">
+    @foreach (var item in Model)
+    {
+        <div class="event-card">
+            <div class="event-info">
+                <h4>@item.EventName</h4>
+                <h4>@item.EventDescription</h4>
+                <h4>@item.EventDescription</h4>
+            </div>
+        </div>
+    }
+</section>
+}
+<section class="events">
+    <div class="event-card">
+        <div class="event-info">
+            <h4>Event 1</h4>
+            <h4>John Doe</h4>
+            <h4>Testikatu 1</h4>
+        </div>
+    </div>
+
+    <div class="event-card">
+        <div class="event-info">
+            <h4>Event 2</h4>
+            <h4>Jane Doe</h4>
+            <h4>Testikatu 2</h4>
+        </div>
+    </div>
+</section>
+
+
+
+@* <div class="pagination">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a class="active" href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">&raquo;</a>
+
+
+</div> *@

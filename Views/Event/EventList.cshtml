@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EventPlan1.Models.Domain.Event>
+@{
+}
+<link href="/css/styles.css" rel="stylesheet" />
+<div class="tbl-container">
+    <h2>Events</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Time</th>
+            
+        </tr>
+        @if (Model != null)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventName</td>
+                <td>@item.EventDescription</td>
+                <td>@item.EventTime</td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                    <a href="/Event/Edit?id=@item.Id" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                    <a onclick="return window.confirm('Are you sure?')" href="/Event/Delete?id=@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                    }
+                    @if (User.IsInRole("User"))
+                    {
+                            <form method="post" asp-controller="Event" asp-action="JoinEvent">
+                                <input type="hidden" name="eventId" value="@item.Id" />
+                                <button type="submit" class="btn btn-primary">Join Event</button>
+                            </form>
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+</div>

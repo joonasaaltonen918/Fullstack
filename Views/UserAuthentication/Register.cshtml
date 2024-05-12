@@ -1,0 +1,54 @@
+﻿@model EventPlan1.Models.DTO.RegistrationModel
+
+
+<link href="/css/styles.css" rel="stylesheet" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="pb-10">
+            <h3>Registration</h3>
+            <form asp-action="Register" method="post">
+                <div class="input-container">
+                    <label>Name</label>
+                    <input type="text" class="w-40" asp-for="Name" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+
+                <div class="input-container">
+                    <label>Email</label>
+                    <input type="text" class="w-40" asp-for="Email" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+                <div class="input-container">
+                    <label>Username</label>
+                    <input type="text" class="w-40" asp-for="Username" />
+                    <span class="text-danger" asp-validation-for="Username"></span>
+                </div>
+
+                <div class="input-container">
+                    <label>Password (eg. John@123)</label>
+                    <input type="password" class="w-40" asp-for="Password" />
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+
+                <div class="input-container">
+                    <label>Password confirm</label>
+                    <input type="password" class="w-40" asp-for="PasswordConfirm" />
+                    <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+                </div>
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="input-container">
+                        <span class="text-info">@TempData["msg"]</span>
+                    </div>
+                }
+
+                <button type="submit" class="btn btn-info">Register</button>
+                <a class="btn btn-primary" href="/UserAuthentication/Login">Back to Login</a>
+            </form>
+        </div>
+    </div>
+</div>
